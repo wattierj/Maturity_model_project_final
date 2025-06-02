@@ -1,0 +1,25 @@
+{% extends "maturity_site/base.html" %}
+
+{% block content %}
+<div class="enter-code-page fade-in">
+
+  <h2 class="text-center mb-4">Access the Survey</h2>
+
+  <p class="text-center text-muted mb-4">Enter the code provided by your manager to begin the digital maturity assessment.</p>
+
+  <form method="post" class="code-form">
+    {% csrf_token %}
+
+    {% if error %}
+      <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <input type="text" name="code" placeholder="Company Code" class="code-input" required>
+      <p></p>
+    <button type="submit" class="code-button">Submit</button>
+  </form>
+
+</div>
+{% endblock %}
+
+

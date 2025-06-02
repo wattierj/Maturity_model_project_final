@@ -1,0 +1,38 @@
+{% extends "maturity_site/base.html" %}
+{% block title %}Company Code{% endblock %}
+
+{% block content %}
+<div class="company-code-container fade-in">
+
+  <h2 class="title">
+  Thank you for signing up!
+  </h2>
+
+  <p class="subtitle">
+    You are now ready to begin. Here is your company code.
+    <br>
+    Keep it secret from people outside your organization and share it internally so your team can participate.
+  </p>
+
+  <div class="code-box">
+    <h4>Company Code</h4>
+    <div id="company-code" class="code-value">{{ company.code }}</div>
+    <button onclick="copyCode()" class="copy-btn"> Copy Company Code</button>
+    <p class="code-info">
+      Employees must enter this code to complete the survey and link it to your company.
+    </p>
+  </div>
+
+  <a href="{% url 'home' %}" class="back-btn">← Back to Home</a>
+
+</div>
+
+<script>
+  function copyCode() {
+    navigator.clipboard.writeText("{{ company.code }}").then(() => {
+      alert("Company code copied!");
+    });
+  }
+</script>
+{% endblock %}
+

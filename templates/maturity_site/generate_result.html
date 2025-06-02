@@ -1,0 +1,19 @@
+{% extends "maturity_site/base.html" %}
+{% block content %}
+<div class="results-container fade-in">
+  
+  <h2 class="results-title"> Results</h2>
+
+  {% if message %}
+    <p class="results-message"><strong>{{ message }}</strong></p>
+  {% else %}
+    <form method="post" class="results-form">
+      {% csrf_token %}
+      <button type="submit" class="results-btn">Generate My Results</button>
+    </form>
+  {% endif %}
+
+  <a href="{% url 'result_history' %}" class="results-btn secondary"> View Result History</a>
+
+</div>
+{% endblock %}

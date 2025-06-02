@@ -1,0 +1,22 @@
+{% extends "maturity_site/base.html" %}
+
+{% block title %}Company Account Creation{% endblock %}
+
+{% block content %}
+<div class="signup-container fade-in">
+
+  <h2 class="text-center">Create Your Company Account</h2>
+  <p class="text-center signup-subtitle">
+    You must be a manager to create your company account. Managers will have exclusive access to results.
+  </p>
+
+  <form method="post" class="signup-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="signup-btn">Sign Up</button>
+  </form>
+
+</div>
+{% endblock %}
+
+

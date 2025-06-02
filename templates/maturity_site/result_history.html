@@ -1,0 +1,26 @@
+{% extends "maturity_site/base.html" %}
+{% block content %}
+<div class="history-container fade-in">
+
+  <h2 class="history-title">Results History</h2>
+
+  {% if results %}
+    <ul class="result-list">
+      {% for result in results %}
+        <li class="result-item">
+          <span class="result-date">
+            {{ result.date_created|date:"d M Y H:i" }}
+          </span>
+          <span class="result-score">
+            Global Score: <strong>{{ result.global_average }}/5</strong>
+          </span>
+          <a href="{% url 'result' result.id %}" class="see-more-btn">See More</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="no-result-msg">No previous results found.</p>
+  {% endif %}
+
+</div>
+{% endblock %}

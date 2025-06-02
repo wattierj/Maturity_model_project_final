@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    body {font-family: Dejavu Sans, sans-serif; font-size: 12px;}
+    h1, h2 {color: #2c3e50; }
+    .section {margin-bottom: 30px;}
+</style>
+</head>
+<body>
+<h1> Digital Maturity report - {{ company.name }}</h1>
+
+<div class="section">
+    <h2>General Results</h2>
+    <p> Score global : {{ result.gloval_average }}/10</p>
+    <p> Axis X Score : {{ result.average_axe_x }}/10</p>
+    <p>Axis Y Score : {{ result.average_axe_y }}/10</p>
+</div>
+<div class="section">
+    <h2>Matrix Position</h2>
+    <img src ="{{ matrix_img_url }}" width="400">
+</div>
+<div class="section">
+    <h2>Dimensions Results : </h2>
+    <ul>
+        {% for dim in dimension_scores %}
+        <li><strong>{{ dim.dimension.name }}</strong> : {{ dim.average }}/10</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="section">
+    <h2> Average Questions Results : </h2>
+    {% for stat in question_stats.values %}
+    <p><strong>{{ stat.question.content }}</strong></p>
+    <ul>
+        {% for val, count in stat.distribution.items %}
+            <li>{{ val }} : {{ count }} answers ({{ count|floatformat:1 }} / {{stat.total}}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
+
+<div class="section">
+    <h2>Recommendations</h2>
+    {{ recommendations|safe }}
+</div>
+</body>
+</html>

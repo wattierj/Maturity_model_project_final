@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'maturity_site/base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Are you a manager or an employee ?</title>
+</head>
+<body>
+{% block content %}
+<div class="role-selection-container fade-in">
+  <h2 class="role-title">What is your role in the company?</h2>
+
+  <form method="post" class="role-options">
+    {% csrf_token %}
+    <button type="submit" name="role" value="manager" class="role-card">
+      <span class="role-text">I am a <strong>Manager</strong> of the company</span>
+    </button>
+
+    <button type="submit" name="role" value="employee" class="role-card">
+      <span class="role-text">I am an <strong>Employee</strong> of the company</span>
+    </button>
+  </form>
+</div>
+{% endblock %}
+</body>
+</html>

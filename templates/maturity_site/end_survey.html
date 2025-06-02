@@ -1,0 +1,13 @@
+{% extends "maturity_site/base.html" %}
+
+{% block content %}
+
+<div class="thank-you-container">
+  <h2> Thank You!</h2>
+  <p>You have successfully completed the digital maturity survey.</p>
+  <p>Your answer had been registered and will be used for the next report !.</p>
+
+  <a href="{% url 'home' %}" class="return-button">Return to Homepage</a>
+</div>
+
+{% endblock %}

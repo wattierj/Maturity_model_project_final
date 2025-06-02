@@ -1,0 +1,59 @@
+{% extends "maturity_site/base.html" %}
+{% block title %}Section {{ section }}{% endblock %}
+{% block content %}
+
+    <div class="progress-container">
+    <div class="progress-text">
+        <strong>Section {{ section }} sur {{ total_sections }}</strong>
+        <span>{{ progress }}%</span>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ progress }}%;"></div>
+    </div>
+</div>
+
+
+<form method="post" id="survey-form">
+    {% csrf_token %}
+
+    {% for question in questions %}
+        <div class="mb-4 rb-box">
+            <p>{{ forloop.counter }}. {{ question.content }}</p>
+            <div id="rb-{{ question.id }}" class="rb">
+    {% for answer in question.possible_answers.all|dictsort:"value" %}
+        <div class="rb-tab" data-value="{{ answer.value }}" data-name="question_{{ question.id }}">
+            <div class="rb-spot">
+                <span class="rb-txt">{{ answer.value }}</span>
+            </div>
+            <div class="rb-label">{{ answer.label }}</div> {# Nouveau : le texte visible #}
+        </div>
+    {% endfor %}
+</div>
+            <!-- Input hidden pour transmettre la valeur sélectionnée -->
+            <input type="hidden" name="question_{{ question.id }}" required>
+        </div>
+    {% endfor %}
+
+    <div class="button-box">
+        <button type="submit" class="button trigger">Soumettre</button>
+    </div>
+
+
+</form>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".rb-tab").forEach(tab => {
+    tab.addEventListener("click", function () {
+      const group = tab.closest(".rb");
+      const name = tab.dataset.name;
+      group.querySelectorAll(".rb-tab").forEach(t => t.classList.remove("rb-tab-active"));
+      tab.classList.add("rb-tab-active");
+
+      const hiddenInput = group.parentElement.querySelector(`input[name="${name}"]`);
+      hiddenInput.value = tab.dataset.value;
+    });
+  });
+});
+</script>
+{% endblock %}
+

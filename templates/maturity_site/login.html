@@ -1,0 +1,19 @@
+{% extends "maturity_site/base.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<div class="login-container fade-in">
+
+  <h2 class="login-title">Log In</h2>
+  <p class="login-subtitle">Access your company account to manage your survey and results.</p>
+
+  <form method="post" class="login-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="login-btn">Log In</button>
+  </form>
+
+</div>
+{% endblock %}
+

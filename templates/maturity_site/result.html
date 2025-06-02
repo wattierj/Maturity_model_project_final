@@ -1,0 +1,61 @@
+{% extends "maturity_site/base.html" %}
+{% load static %}
+{% block content %}
+<div class="result-container fade-in">
+
+  <h2 class="result-title">📊 Company Result : {{ result.company.name }}</h2>
+
+  <div class="score-card">
+    <p><strong>Global Score:</strong> {{ result.global_average }}/10</p>
+    <p><strong>IT Infrastructure Axis (X):</strong> {{ avg_x }}/10</p>
+    <p><strong>Digital Mindset Axis (Y):</strong> {{ avg_y }}/10</p>
+  </div>
+
+  <h3 class="section-title">🧭 Matrix Positioning</h3>
+  <div class="matrix-wrapper">
+    <div class="matrix" style="position: relative; width:400px; height: 400px; background-image: url('{% static 'images/matrix.png'%}'); background-size:contain; background-repeat:no-repeat; background-position: center; border: 1px solid #ccc;">
+
+    <div style="
+        position: absolute;
+        left: {{ left_px }}px;
+        bottom: {{ bottom_px }}px;
+        width: 20px; height:20px;
+        background: red; border-radius: 50%; border: 2px solid black"></div>
+    </div>
+  </div>
+
+  <div class="position-card">
+    <h3>Your Company Position is:</h3>
+    {% if avg_x < 5 and avg_y < 5 %}
+      <p class="position-name">🔰 Initiator</p>
+      <p>This is the lowest position. Your infrastructure and mindset both need development. This indicates early-stage digital maturity.</p>
+    {% elif avg_x > 5 and avg_y < 5 %}
+      <p class="position-name">🧭 Explorer</p>
+      <p>You have solid digital tools but lack the mindset to fully leverage them. Risk of resistance or slow adoption.</p>
+    {% elif avg_x < 5 and avg_y > 5 %}
+      <p class="position-name">📐 Architect</p>
+      <p>You have a strong innovation mindset but lack sufficient digital infrastructure. You are ready for tools, but don’t have them yet.</p>
+    {% elif avg_x > 5 and avg_y > 5 %}
+      <p class="position-name">💡 Visionary</p>
+      <p>You are digitally mature. Tools and mindset are aligned. Strong potential for advanced digital transformation.</p>
+    {% endif %}
+  </div>
+
+  <div class="percentile-info">
+    <h4>📈 Your company is positioned in the <strong>{{ percentile }}</strong><sup>e</sup> percentile in your sector.</h4>
+  </div>
+
+  <h3 class="section-title">✅ Recommendations</h3>
+  <ul class="recommendation-list">
+    {% for reco in recommendations %}
+      <li>{{ reco }}</li>
+    {% empty %}
+      <li>No specific recommendations.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'generate_pdf_report' result.id %}" class="btn-report">📄 Generate Report (PDF)</a>
+
+</div>
+{% endblock %}
+

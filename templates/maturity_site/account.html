@@ -1,0 +1,21 @@
+{% extends "maturity_site/base.html" %}
+
+{% block title %}My Company Account{% endblock %}
+
+{% block content %}
+<div class="account-container fade-in">
+  <h2 class="account-title"> Company Profile</h2>
+
+  <div class="account-card">
+    <p><strong>Company Name:</strong> {{ company.name }}</p>
+    <p><strong>Company Code:</strong> <span class="code-highlight">{{ company.code }}</span></p>
+    <p><strong>Number of Employees:</strong> {{ company.number_of_employee|default:"Not specified" }}</p>
+    <p><strong>Sector:</strong> {{ company.sector|default:"Not specified" }}</p>
+    <p><strong>Sales Revenue:</strong> {{ company.sales_revenue|default:"None" }} €</p>
+    <p><strong>Company Age:</strong> {{ company.age|default:"Not specified" }}</p>
+    <p><strong>Number of survey for the next report:</strong>{{ pending_diagnostics }}</p>
+  </div>
+
+</div>
+{% endblock %}
+

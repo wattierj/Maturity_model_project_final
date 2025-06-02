@@ -1,0 +1,29 @@
+{% extends "maturity_site/base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="about-container">
+  <header class="about-header fade-in">
+    <h1>About the Project</h1>
+    <p>This website is part of a master's thesis in Data Science at the University of Namur, focusing on the digital transformation of SMEs.</p>
+  </header>
+
+  <section class="about-section fade-in">
+    <h2>The Objective</h2>
+    <p>This website helps assess the digital maturity of SMEs through two main axes, divided into several dimensions and measurable KPIs.</p>
+  </section>
+
+  <section class="about-section fade-in">
+    <h2>How does it work?</h2>
+    <p>To begin, a company account must be created by a manager. Once registered, the manager receives a unique Company Code.</p>
+    <p>This code can be shared with employees, allowing them to answer the survey without creating their own account.</p>
+    <p>The survey asks role-specific questions to both managers and employees.</p>
+  </section>
+
+  <section class="about-section fade-in">
+    <h2>How can I see my results?</h2>
+    <p>Once all participants complete the survey, the company owner can log in, click on "My Results", and generate a full maturity report based on the latest data.</p>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "maturity_site/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="hero-section">
+  <div class="hero-overlay"></div>
+  <img src="{% static 'images/illustration_transformation.png' %}" alt="Background" class="hero-image">
+  <div class="hero-content">
+    <a href="{% url 'enter_code' %}" class="cta-button">Begin the Survey</a>
+  </div>
+</div>
+
+<section class="info-section">
+  <h2>Why this questionnaire?</h2>
+  <p>This project is part of a master’s thesis in Data Science at the University of Namur. It aims to evaluate the digital maturity of SMEs through a structured diagnostic.</p>
+
+  <h3>How does it work?</h3>
+  <ul>
+    <li>1️⃣ The manager creates an account and receives a unique company code.</li>
+    <li>2️⃣ Employees use this code to answer the survey according to their role.</li>
+    <li>3️⃣ Once completed, a comprehensive report is generated to visualize digital maturity.</li>
+  </ul>
+
+  <h3>What is the objective?</h3>
+  <p>To help SMEs identify their strengths and weaknesses in digital transformation and provide personalized recommendations for improvement.</p>
+</section>
+{% endblock %}
