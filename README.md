@@ -1,5 +1,5 @@
 #Digital Maturity Model - Django Web App 
-This project is a web application developed in Dhango that aims to help SMEs in their evaluation of their digital maturity
+This project is a web application developed in Django that aims to help SMEs in their evaluation of their digital maturity
 
 #Context 
 This project had been realized for a master thesis at the University of Namur. It aims to :
