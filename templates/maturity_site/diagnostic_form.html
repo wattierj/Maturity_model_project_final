@@ -25,11 +25,11 @@
             <div class="rb-spot">
                 <span class="rb-txt">{{ answer.value }}</span>
             </div>
-            <div class="rb-label">{{ answer.label }}</div> {# Nouveau : le texte visible #}
+            <div class="rb-label">{{ answer.label }}</div> 
         </div>
     {% endfor %}
 </div>
-            <!-- Input hidden pour transmettre la valeur sélectionnée -->
+
             <input type="hidden" name="question_{{ question.id }}" required>
         </div>
     {% endfor %}
